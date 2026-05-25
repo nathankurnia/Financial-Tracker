@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/card";
 import { signUp } from "@/app/(auth)/actions";
 import { Link } from "lucide-react";
+import { GoogleSignInButton } from "./google-signin-button";
 
 const schema = z.object({
   email: z.string().email("Email tidak valid"),
@@ -97,6 +98,18 @@ export default function SignUpForm() {
           <Button type="submit" disabled={isPending} className="w-full">
             {isPending ? "Mendaftarkan..." : "Daftar"}
           </Button>
+
+          <div className="relative w-full">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">Atau</span>
+            </div>
+          </div>
+
+          <GoogleSignInButton />
+
           <p className="text-sm text-muted-foreground text-center">
             Sudah punya akun?{" "}
             <Link href="/login" className="text-primary hover:underline">
