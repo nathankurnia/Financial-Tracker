@@ -42,7 +42,7 @@ export function GoogleSignInButton() {
           fill="#EA4335"
         />
       </svg>
-      {isPending ? "Mengarahkan..." : "Lanjutkan dengan Google"}
+      {isPending ? "Redirecting..." : "Continue with Google"}
     </Button>
   );
 }

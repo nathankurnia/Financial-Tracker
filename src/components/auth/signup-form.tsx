@@ -57,9 +57,9 @@ export default function SignUpForm() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Daftar Akun Baru</CardTitle>
+        <CardTitle>Create your account</CardTitle>
         <CardDescription>
-          Mulai catat keuanganmu dalam hitungan detik.
+          Start tracking your finances in seconds.
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -96,7 +96,7 @@ export default function SignUpForm() {
         </CardContent>
         <CardFooter className="flex flex-col gap-3">
           <Button type="submit" disabled={isPending} className="w-full">
-            {isPending ? "Mendaftarkan..." : "Daftar"}
+            {isPending ? "Creating account..." : "Sign up"}
           </Button>
 
           <div className="relative w-full">
@@ -104,16 +104,16 @@ export default function SignUpForm() {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-card px-2 text-muted-foreground">Atau</span>
+              <span className="bg-card px-2 text-muted-foreground">Or</span>
             </div>
           </div>
 
           <GoogleSignInButton />
 
           <p className="text-sm text-muted-foreground text-center">
-            Sudah punya akun?{" "}
+            Already have an account?{" "}
             <Link href="/login" className="text-primary hover:underline">
-              Masuk di sini
+              Sign in here
             </Link>
           </p>
         </CardFooter>

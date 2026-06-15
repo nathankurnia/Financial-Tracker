@@ -6,8 +6,8 @@ import { z } from "zod";
 import React from "react";
 
 const authSchema = z.object({
-  email: z.string().email("Email tidak valid"),
-  password: z.string().min(6, "Password minimal 6 karakter"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 export async function signUp(formData: FormData) {

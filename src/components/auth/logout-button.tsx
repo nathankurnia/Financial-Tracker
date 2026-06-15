@@ -19,7 +19,7 @@ export function LogoutButton() {
 
   return (
     <Button variant="outline" onClick={handleLogout} disabled={isPending}>
-      {isPending ? "Keluar..." : "Keluar"}
+      {isPending ? "Signing out..." : "Sign out"}
     </Button>
   );
 }

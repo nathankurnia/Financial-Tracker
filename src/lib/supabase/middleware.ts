@@ -24,6 +24,28 @@ export async function updateSession(request: NextRequest) {
       },
     },
   );
-  await supabase.auth.getUser();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const path = request.nextUrl.pathname;
+  const isAuthRoute = path === "/login" || path === "/signup";
+  const isAppRoute = path.startsWith("/dashboard");
+
+  //Unauthenticated users should be redirected to login page when trying to access app routes
+  if (!user && isAppRoute) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/login";
+    return NextResponse.redirect(url);
+  }
+
+  //Authenticated users should be redirected to dashboard when trying to access auth routes
+  if (user && isAuthRoute) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/dashboard";
+    return NextResponse.redirect(url);
+  }
+
   return supabaseResponse;
 }

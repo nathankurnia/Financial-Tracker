@@ -57,8 +57,10 @@ export function LoginForm() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Masuk ke Akun Anda</CardTitle>
-        <CardDescription>Lanjutkan mencatat keuangan Anda.</CardDescription>
+        <CardTitle>Welcome back</CardTitle>
+        <CardDescription>
+          Sign in to continue tracking your finances..
+        </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
         <CardContent className="flex flex-col gap-4">
@@ -90,8 +92,8 @@ export function LoginForm() {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-3">
-          <Button type="submit" className="w-full" disabled>
-            {isPending ? "Memproses..." : "Masuk"}
+          <Button type="submit" className="w-full" disabled={isPending}>
+            {isPending ? "Signing in..." : "Sign in"}
           </Button>
 
           <div className="relative w-full">
@@ -106,9 +108,9 @@ export function LoginForm() {
           <GoogleSignInButton />
 
           <p className="text-sm text-muted-foreground text-center">
-            Belum punya akun?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/signup" className="text-primary hover:underline">
-              Daftar di sini
+              Sign up here
             </Link>
           </p>
         </CardFooter>
