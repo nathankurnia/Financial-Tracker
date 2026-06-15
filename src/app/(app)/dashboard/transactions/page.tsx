@@ -3,7 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { AddTransactionDialog } from "@/components/transactions/add-transaction-dialog";
 import { TransactionList } from "@/components/transactions/transaction-list";
 import type { Account, Category, Transaction } from "@/types/database";
-
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 export default async function TransactionsPage() {
   const supabase = await createClient();
 
@@ -50,25 +51,36 @@ export default async function TransactionsPage() {
 
       {accounts.length === 0 && (
         <Card>
-          <CardContent className="flex flex-col items-center justify-center gap-3 py-12 text-center">
-            <p className="text-muted-foreground">
-              You need at least one account to start tracking transactions.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Add an account first from the Accounts page.
-            </p>
+          <CardContent className="flex flex-col items-center justify-center gap-4 py-16 text-center">
+            <div className="text-6xl">🏦</div>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-semibold">No accounts yet</h3>
+              <p className="text-sm text-muted-foreground max-w-sm">
+                You need at least one account to start tracking transactions.
+                Add a bank account, digital wallet, or cash account first.
+              </p>
+            </div>
+            <Button asChild>
+              <Link href="/dashboard/accounts">Go to Accounts</Link>
+            </Button>
           </CardContent>
         </Card>
       )}
 
       {accounts.length > 0 && transactions.length === 0 && (
         <Card>
-          <CardContent className="flex flex-col items-center justify-center gap-3 py-12 text-center">
-            <p className="text-muted-foreground">
-              You don&apos;t have any transactions yet.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Click &quot;Add Transaction&quot; above to record your first one.
+          <CardContent className="flex flex-col items-center justify-center gap-4 py-16 text-center">
+            <div className="text-6xl">💰</div>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-semibold">Track your first transaction</h3>
+              <p className="text-sm text-muted-foreground max-w-sm">
+                Start logging your income and expenses to see where your money
+                goes. You can add transactions in any currency you&apos;ve set
+                up.
+              </p>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Click &quot;+ Add Transaction&quot; above to begin
             </p>
           </CardContent>
         </Card>

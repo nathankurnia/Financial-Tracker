@@ -53,12 +53,17 @@ export default async function AccountsPage() {
       </div>
       {(!accounts || accounts.length === 0) && (
         <Card>
-          <CardContent className="flex flex-col items-center justify-center gap-3 py-12 text-center">
-            <p className="text-muted-foreground">
-              You don&apos;t have any accounts yet.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Add your first account to start tracking your finances!.
+          <CardContent className="flex flex-col items-center justify-center gap-4 py-16 text-center">
+            <div className="text-6xl">🏦</div>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-semibold">No accounts yet</h3>
+              <p className="text-sm text-muted-foreground max-w-sm">
+                Add your bank accounts, digital wallets, or cash to start
+                managing your finances across Indonesia and Europe.
+              </p>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Click &quot;+ Add Account&quot; above to begin
             </p>
           </CardContent>
         </Card>

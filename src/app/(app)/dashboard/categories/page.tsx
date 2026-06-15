@@ -40,12 +40,18 @@ export default async function CategoriesPage() {
 
       {(!categories || categories.length === 0) && (
         <Card>
-          <CardContent className="flex flex-col items-center justify-center gap-3 py-12 text-center">
-            <p className="text-muted-foreground">
-              You don&apos;t have any categories yet.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Create categories to group your transactions.
+          <CardContent className="flex flex-col items-center justify-center gap-4 py-16 text-center">
+            <div className="text-6xl">📂</div>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-semibold">No categories yet</h3>
+              <p className="text-sm text-muted-foreground max-w-sm">
+                Categories help you organize transactions. Create some for
+                expenses like Mensa, Groceries, BVG, and for income like BAföG
+                or Scholarship.
+              </p>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Click &quot;+ Add Category&quot; above to begin
             </p>
           </CardContent>
         </Card>
