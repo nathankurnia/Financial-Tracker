@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Finance Tracker
+
+A personal finance tracker built with Next.js and Supabase. Track your income and expenses across multiple accounts and categories.
+
+## Features
+
+- Email/password authentication and Google OAuth
+- Multiple accounts with automatic balance updates
+- Transaction management (income & expense) with category tagging
+- Filter and sort transactions by type, account, category, date, or amount
+- Dashboard with accounts and categories overview
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Database & Auth:** Supabase
+- **Styling:** Tailwind CSS v4, shadcn/ui
+- **Forms:** React Hook Form + Zod
+- **Language:** TypeScript
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone and install
+
+```bash
+git clone <repo-url>
+cd finance-tracker
+npm install
+```
+
+### 2. Set up environment variables
+
+```bash
+cp .env.example .env.local
+```
+
+Then fill in the values in `.env.local` (see [Environment Variables](#environment-variables) below).
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Required | Description |
+|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | Yes | Your Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Yes | Your Supabase publishable API key |
+| `NEXT_PUBLIC_BASE_URL` | No | Base URL for OAuth redirects (defaults to `http://localhost:3000`) |
 
-## Learn More
+Get `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` from your [Supabase project API settings](https://supabase.com/dashboard/project/_/settings/api).
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Vercel (recommended)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push the repo to GitHub
+2. Import the project on [Vercel](https://vercel.com/new)
+3. Add the environment variables in the Vercel project settings
+4. Set `NEXT_PUBLIC_BASE_URL` to your production URL (e.g. `https://your-app.vercel.app`)
+5. In Supabase, add your production URL to the allowed redirect URLs under **Authentication → URL Configuration**
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build  # verify the build passes locally before deploying
+```
